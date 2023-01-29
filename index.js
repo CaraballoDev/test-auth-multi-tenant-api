@@ -12,7 +12,6 @@ app.use(cookieParser());
 
 const cookie_config = {
     name: "admin-session",
-    secret: COOKIE_SECRET,
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
     httpOnly: true, // es true por defecto
     secure: true // process.env.NODE_ENV === "production",

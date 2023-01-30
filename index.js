@@ -34,7 +34,7 @@ app.all("*", (req, res, next) => {
   });
 
   res.json({
-    host: req.headers.host,
+    origin: req.headers.origin,
     cookies: req.cookies,
   });
 });

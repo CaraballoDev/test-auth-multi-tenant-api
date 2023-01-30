@@ -19,7 +19,7 @@ const cookie_config = {
   }
 
 app.all("*", (req, res, next) => {
-  res.cookie('cris-auth-cookie', {
+  res.cookie('cris-auth-cookie','token', {
     path: "/",
     sameSite:
       process.env.NODE_ENV === "production"

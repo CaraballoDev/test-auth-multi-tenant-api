@@ -5,6 +5,7 @@ const cors = require("cors");
 app.use((req, res, next) =>
   cors({
     origin: process.env.CORS_ORIGIN?.split(",") ?? req.headers.origin,
+    credentials: true,
   })(req, res, next)
 );
 
@@ -26,14 +27,14 @@ app.all("*", (req, res, next) => {
         ? process.env.COOKIE_SAMESITE
         : "Strict",
     domain:
-      process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : "",
+      process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : "crisom.link",
     maxAge: cookie_config.maxAge, // 24 hours
     httpOnly: cookie_config.httpOnly, // es true por defecto
     secure: cookie_config.secure,
   });
 
   res.json({
-    origin: req.headers.origin,
+    host: req.headers.host,
     cookies: req.cookies,
   });
 });
